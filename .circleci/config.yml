@@ -32,12 +32,12 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r pollsapi/requirements.txt
+            pip install -r requirements.txt
 
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "pollsapi/requirements.txt" }}
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       # run tests!
       # this example uses Django's built-in test-runner
@@ -48,7 +48,6 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            cd pollsapi
             python manage.py test
 
       - store_artifacts:
