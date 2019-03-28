@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from polls.views import CreateUser, LoginView
+from rest_framework.documentation import include_docs_urls
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
     path('users/', CreateUser.as_view(), name='create_user'),
-    path('login/', LoginView.as_view(), name='login')
+    path('login/', LoginView.as_view(), name='login'),
+    path('docs/', include_docs_urls(title='Polls Api'))
 ]
