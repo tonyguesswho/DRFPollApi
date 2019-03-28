@@ -29,13 +29,13 @@ class TestPoll(APITestCase):
     @staticmethod
     def setup_user():
         User = get_user_model()
-        return User.objects.create_user('test',email='testuser@gmail.com',password='test')
+        return User.objects.create_user(username='test', email='testuser@gmail.com', password='test')
 
     def test_create_poll(self):
         self.client.login(username='test', password='test')
         data={
             "question":"who is the king of the jungle",
-            "created_by":2
+            "created_by":1
         }
         response = self.client.post(self.uri, data)
         self.assertEqual(response.status_code, 201)
